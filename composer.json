@@ -4,7 +4,7 @@
     "type": "neos-package",
     "require": {
         "neos/flow": "*",
-        "neos/neos": "*",
+        "neos/neos": "*"
     },
     "autoload": {
         "psr-4": {
