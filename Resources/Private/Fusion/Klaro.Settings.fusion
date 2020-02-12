@@ -1,0 +1,45 @@
+prototype(Sandstorm.CookieConsent:Klaro.Settings) < prototype(Neos.Fusion:Component) {
+    privacyPolicyHref = null
+    privacyPolicyHref.@process.convert = Neos.Neos:ConvertUris
+
+    # 'de', 'en', 'fr', ... see klaro documentation. You can also define your own langauge key (e.g. 'foo') and provide all translations yourself
+    language = null
+
+    cookieModalTranslations = null
+
+    apps = null
+
+    renderer = Neos.Fusion:DataStructure {
+        # You can customize the ID of the DIV element that Klaro will create
+        # when starting up. If undefined, Klaro will use 'klaro'.
+        elementID = 'klaro'
+
+        # You can customize the name of the cookie that Klaro uses for storing
+        # user consent decisions. If undefined, Klaro will use 'klaro'.
+        cookieName = 'cookieconsent'
+
+        # You can also set a custom expiration time for the Klaro cookie.
+        # By default, it will expire after 120 days.
+        cookieExpiresAfterDays = 120
+
+        # Put a link to your privacy policy here (relative or absolute).
+        privacyPolicy = ${props.privacyPolicyHref}
+
+        # Defines the default state for applications (true=enabled by default).
+        default = true
+
+        # If "mustConsent" is set to true, Klaro will directly display the consent
+        # manager modal and not allow the user to close it before having actively
+        # consented or declines the use of third-party apps.
+        mustConsent = false
+
+        lang = ${props.language}
+
+        translations = ${Array.set([], props.language, props.cookieModalTranslations)}
+
+        apps = ${Klaro.createAppConfiguration(props.apps)}
+
+        @process.toJson = ${Json.stringify(value, ['JSON_UNESCAPED_SLASHES'])}
+        @process.wrap = ${'<script>var klaroConfig=' + value + ';</script>'}
+    }
+}

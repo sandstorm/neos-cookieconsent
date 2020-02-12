@@ -1,0 +1,9 @@
+prototype(Sandstorm.CookieConsent:Script.KlaroJs) < prototype(Neos.Fusion:Tag) {
+    tagName = 'script'
+    attributes {
+        defer = true
+        src = Neos.Fusion:ResourceUri {
+            path = 'resource://Sandstorm.CookieConsent/Public/JavaScript/klaro-0-2-14.js'
+        }
+    }
+}

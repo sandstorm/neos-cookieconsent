@@ -1,0 +1,8 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        'Sandstorm.CookieConsent': TRUE
+  Fusion:
+    defaultContext:
+      Klaro: 'Sandstorm\CookieConsent\Eel\KlaroHelper'

@@ -1,0 +1,48 @@
+'Sandstorm.CookieConsent:Klaro.App':
+  abstract: true
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    inspector:
+      tabs:
+        general:
+          label: 'Allgemeine Einstellungen'
+          position: 1
+          icon: 'icon-pencil'
+      groups:
+        properties:
+          label: 'Allgemeine Eigenschaften'
+          tab: 'general'
+          icon: 'icon-pencil'
+          position: 100
+  klaro:
+    # This name can be used as a reference in script-tags or fonts that should be lazy-loaded. See klaro documentation
+    name: 'to-be-defined'
+    # Example for a list of cookies. The three items are: cookie-name, path, domain (needed if != your domain). See klaro documentation
+#   cookies:
+#      - ['_fbp', "/"]
+#      - ['fr', "/", '.facebook.com']
+#      - ['', '/tr', 'www.facebook.com']
+#  purposes:
+#   - 'livechat'
+  properties:
+    title:
+      type: string
+      ui:
+        label: 'Name des Cookies'
+        inspector:
+          group: 'properties'
+    description:
+      type: string
+      ui:
+        label: 'Beschreibungstext'
+        inspector:
+          group: 'properties'
+    required:
+      type: boolean
+      defaultValue: false
+      ui: ~
+    default:
+      type: boolean
+      defaultValue: true
+      ui: ~
