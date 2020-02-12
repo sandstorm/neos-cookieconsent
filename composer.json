@@ -1,5 +1,5 @@
 {
-    "name": "sandstorm/neos-cookie-consent",
+    "name": "sandstorm/neos-cookieconsent",
     "description": "",
     "type": "neos-package",
     "require": {
