@@ -1,18 +1,18 @@
 prototype(Sandstorm.CookieConsent:RevokeCookieConsentButton) < prototype(Neos.Neos:ContentComponent) {
-    renderer = Sandstorm.CookieConsent:RevokeCookieConsentButtonRenderer {
+    renderer = Sandstorm.CookieConsent:Component.RevokeCookieConsentButton {
         buttonText = Neos.Neos:Editable {
             property = "text"
             block = false
         }
-        onClick = Oekokiste.Core:FrontendBackendCase {
-            inFrontend.renderer = "return klaro.show();"
-            inBackend.renderer = ""
-        }
-        cssClasses = "button button--color-brand button--text-like-button"
+
+        onClick = "return klaro.show();"
+        onClick.@if.notInBackend = ${!node.context.inBackend}
+
+        cssClasses = 'revoke-cookie-consent-button'
     }
 }
 
-prototype(Sandstorm.CookieConsent:RevokeCookieConsentButtonRenderer) < prototype(Neos.Fusion:Component) {
+prototype(Sandstorm.CookieConsent:Component.RevokeCookieConsentButton) < prototype(Neos.Fusion:Component) {
     buttonText = null
     cssClasses = null
     onClick = null
