@@ -3,6 +3,7 @@ prototype(Sandstorm.CookieConsent:CookieConsent) < prototype(Neos.Fusion:Compone
     cookieModalTranslations = null
     language = null
     apps = null
+    includeLibraryCss = true
 
     renderer = afx`
         <Sandstorm.CookieConsent:Klaro.Settings
@@ -13,5 +14,6 @@ prototype(Sandstorm.CookieConsent:CookieConsent) < prototype(Neos.Fusion:Compone
         />
         <Sandstorm.CookieConsent:Script.ConvertStringToRegex />
         <Sandstorm.CookieConsent:Script.KlaroJs />
+        <Sandstorm.CookieConsent:Script.KlaroCss @if.true={props.includeLibraryCss} />
     `
 }
