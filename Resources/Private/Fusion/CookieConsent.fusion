@@ -1,45 +1,8 @@
 prototype(Sandstorm.CookieConsent:CookieConsent) < prototype(Neos.Fusion:Component) {
-    _privacyPolicyHref = ${q(site).property('privacyPolicyReference')}
-
-    @context._cookieConsentProps = ${q(site).children('cookie-consent').find('[instanceof Sandstorm.CookieConsent:CookieConsent]').get(0).properties}
-    _cookieModalTranslations = Neos.Fusion:DataStructure {
-        ok = ${_cookieConsentProps.ok}
-        decline = ${_cookieConsentProps.decline}
-        consentNotice = Neos.Fusion:DataStructure {
-            description = ${_cookieConsentProps.consentNoticeDescription}
-            learnMore = ${_cookieConsentProps.consentNoticeLearnMore}
-        }
-        consentModal = Neos.Fusion:DataStructure {
-            title = ${_cookieConsentProps.consentModalTitle}
-            description = ${_cookieConsentProps.consentModalDescription}
-            privacyPolicy = Neos.Fusion:DataStructure {
-                name = ${_cookieConsentProps.consentModalPrivacyPolicyName}
-                text = ${_cookieConsentProps.consentModalPrivacyPolicyText}
-            }
-        }
-        # Static labels, will not be translated. Hopefully generic enough to be used in any language
-        purposes = Neos.Fusion:DataStructure {
-            livechat = 'Live Chat'
-            styling = 'Styling'
-            tracking = 'Tracking'
-        }
-    }
-
-    renderer = Sandstorm.CookieConsent:CookieConsentRenderer {
-        privacyPolicyHref = ${props._privacyPolicyHref ? props._privacyPolicyHref : '/footer/datenschutz.html'}
-        cookieModalTranslations = ${props._cookieModalTranslations}
-        language = ${site.context.dimensions.language[0] ? site.context.dimensions.language[0] : 'de'}
-        apps = ${q(site).children('cookie-consent').children().find('apps').children().get()}
-    }
-}
-
-prototype(Sandstorm.CookieConsent:CookieConsentRenderer) < prototype(Neos.Fusion:Component) {
     privacyPolicyHref = null
     cookieModalTranslations = null
     language = null
     apps = null
-
-    _convertStringsToRegexScript = 'klaroConfig.apps.map(function(app) { return app.cookies }).forEach(function(regex) { if (regex) { regex[0][0] = new RegExp(regex[0][0])} })'
 
     renderer = afx`
         <Sandstorm.CookieConsent:Klaro.Settings
@@ -48,7 +11,7 @@ prototype(Sandstorm.CookieConsent:CookieConsentRenderer) < prototype(Neos.Fusion
             cookieModalTranslations={props.cookieModalTranslations}
             apps={props.apps}
         />
+        <Sandstorm.CookieConsent:Script.ConvertStringToRegex />
         <Sandstorm.CookieConsent:Script.KlaroJs />
-        <script>{props._convertStringsToRegexScript}</script>
     `
 }

@@ -1,0 +1,9 @@
+prototype(Sandstorm.CookieConsent:Script.ConvertStringToRegex) < prototype(Neos.Fusion:Component) {
+    _convertStringsToRegexScript = 'klaroConfig.apps.map(function(app) { return app.cookies }).forEach(function(regex) { if (regex) { regex[0][0] = new RegExp(regex[0][0])} })'
+
+    renderer = afx`
+        <script>
+            {props._convertStringsToRegexScript}
+        </script>
+    `
+}
