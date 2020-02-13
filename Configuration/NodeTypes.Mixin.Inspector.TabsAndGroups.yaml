@@ -1,0 +1,14 @@
+'Sandstorm.CookieConsent:Mixin.Inspector.TabsAndGroups':
+  ui:
+    inspector:
+      tabs:
+        general:
+          label: Allgemeine Einstellungen
+          position: 1
+          icon: icon-pencil
+      groups:
+        properties:
+          label: Allgemeine Eigenschaften
+          tab: general
+          icon: icon-pencil
+          position: 100

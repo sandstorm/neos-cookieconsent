@@ -2,19 +2,7 @@
   abstract: true
   superTypes:
     'Neos.Neos:Content': true
-  ui:
-    inspector:
-      tabs:
-        general:
-          label: Allgemeine Einstellungen
-          position: 1
-          icon: icon-pencil
-      groups:
-        properties:
-          label: Allgemeine Eigenschaften
-          tab: general
-          icon: icon-pencil
-          position: 100
+    'Sandstorm.CookieConsent:Mixin.Inspector.TabsAndGroups': true
   klaro:
 # This name can be used as a reference in script-tags or fonts that should be loaded in a deferred manner. See klaro documentation
 # on how to defer loading of script, link and iframe tags

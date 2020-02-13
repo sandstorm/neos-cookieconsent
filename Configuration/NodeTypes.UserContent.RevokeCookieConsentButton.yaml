@@ -1,7 +1,7 @@
 'Sandstorm.CookieConsent:RevokeCookieConsentButton':
   superTypes:
     'Neos.Neos:Content': true
-    'Oekokiste.Core:Mixin.InspectorSettings': true
+    'Sandstorm.CookieConsent:Mixin.Inspector.TabsAndGroups': true
   ui:
     label: Cookie-Manager-Button
     icon: external-link-square
