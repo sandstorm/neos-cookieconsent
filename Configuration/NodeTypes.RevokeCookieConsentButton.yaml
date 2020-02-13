@@ -14,4 +14,4 @@
         inspector: null
         inline:
           editorOptions:
-            placeholder: '[kein Text]'
+            placeholder: '[Button text]'
