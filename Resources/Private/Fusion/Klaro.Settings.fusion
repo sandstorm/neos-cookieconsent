@@ -32,7 +32,12 @@ prototype(Sandstorm.CookieConsent:Klaro.Settings) < prototype(Neos.Fusion:Compon
         # consented or declines the use of third-party apps.
         mustConsent = false
 
+        // You can define the UI language directly here. If undefined, Klaro will
+        // use the value given in the global "lang" variable. If that does
+        // not exist, it will use the value given in the "lang" attribute of your
+        // HTML tag. If that also doesn't exist, it will use 'en'.
         lang = ${props.language}
+        lang.@if.true = ${props.language != null}
 
         translations = ${Array.set([], props.language, props.cookieModalTranslations)}
 
