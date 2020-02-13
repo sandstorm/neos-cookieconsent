@@ -1,0 +1,17 @@
+'Sandstorm.CookieConsent:App.GoogleFonts':
+  superTypes:
+    'Sandstorm.CookieConsent:App': true
+  ui:
+    label: Google Fonts
+  klaro:
+    # This name can be used as a reference in script-tags or fonts that should be lazy-loaded. See klaro documentation.
+    # This value should be considered API as it will be referenced in implementations. If you change it, please release
+    # a major version as it should be considered a breaking change.
+    name: googleFonts
+    purposes:
+      - 'styling'
+  properties:
+    title:
+      defaultValue: Google Fonts
+    description:
+      defaultValue: Web-Schriftarten von Google gehostet.

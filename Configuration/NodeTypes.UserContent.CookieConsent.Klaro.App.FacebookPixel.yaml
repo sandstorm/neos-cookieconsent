@@ -1,0 +1,22 @@
+'Sandstorm.CookieConsent:App.FacebookPixel':
+  superTypes:
+    'Sandstorm.CookieConsent:App': true
+  ui:
+    label: Facebook Pixel
+  klaro:
+    # This name can be used as a reference in script-tags or fonts that should be lazy-loaded. See klaro documentation.
+    # This value should be considered API as it will be referenced in implementations. If you change it, please release
+    # a major version as it should be considered a breaking change.
+    name: facebookPixel
+    cookies:
+      - ['_fbp', "/"]
+      - ['fr', "/", '.facebook.com']
+      - ['', '/tr', 'www.facebook.com']
+    purposes:
+      - 'tracking'
+  properties:
+    title:
+      defaultValue: Facebook Pixel
+    description:
+      defaultValue: Tracking des Nutzerverhaltens (z.B. für gezieltere Werbekampagnen).
+

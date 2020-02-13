@@ -1,0 +1,19 @@
+'Sandstorm.CookieConsent:App.Tawk':
+  superTypes:
+    'Sandstorm.CookieConsent:App': true
+  ui:
+    label: Tawk Chat
+  klaro:
+    # This name can be used as a reference in script-tags or fonts that should be lazy-loaded. See klaro documentation
+    name: tawk
+    cookies:
+      - ['__tawkuuid', "/"]
+      - ['TawkConnectionTime', "/"]
+    purposes:
+      - 'livechat'
+  properties:
+    title:
+      defaultValue: Tawk Chat
+    description:
+      defaultValue: Onlinechat zum direkten Kontakt mit unseren Kundenberatern.
+

@@ -26,7 +26,7 @@
       constraints:
         nodeTypes:
           '*': false
-          'Sandstorm.CookieConsent:Klaro.App': true
+          'Sandstorm.CookieConsent:App': true
   properties:
     consentNoticeDescription:
       type: string
