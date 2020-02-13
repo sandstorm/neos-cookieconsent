@@ -3,23 +3,6 @@
     'Neos.Neos:Content': true
   ui:
     label: Cookie Consent
-    inspector:
-      tabs:
-        general:
-          label: Einstellungen
-          position: 1
-          icon: icon-pencil
-      groups:
-        smallPopup:
-          label: Kleines Popup
-          tab: general
-          icon: icon-pencil
-          position: 100
-        settingsPopup:
-          label: Popup mit Einstellungen
-          tab: general
-          icon: icon-pencil
-          position: 100
   childNodes:
     apps:
       type: 'Neos.Neos:ContentCollection'
@@ -27,54 +10,3 @@
         nodeTypes:
           '*': false
           'Sandstorm.CookieConsent:App': true
-  properties:
-    consentNoticeDescription:
-      type: string
-      ui:
-        label: Haupttext
-        inspector:
-          group: smallPopup
-    ok:
-      type: string
-      ui:
-        label: Cookies-Zulassen Button
-        inspector:
-          group: smallPopup
-    decline:
-      type: string
-      ui:
-        label: Cookies-Ablehnen-Button
-        inspector:
-          group: smallPopup
-    consentNoticeLearnMore:
-      type: string
-      ui:
-        label: Cookieeinstellungen-Button
-        inspector:
-          group: smallPopup
-    consentModalTitle:
-      type: string
-      ui:
-        label: Überschrift
-        inspector:
-          group: settingsPopup
-    consentModalDescription:
-      type: string
-      ui:
-        label: Haupttext
-        inspector:
-          group: settingsPopup
-    consentModalPrivacyPolicyName:
-      type: string
-      ui:
-        label: Text des links zur Datenschutzerklärung
-        inspector:
-          group: settingsPopup
-    consentModalPrivacyPolicyText:
-      type: string
-      ui:
-        label: Hinweistext zur Datenschutzerklärung
-        help:
-          message: Im Text kann der Platzhalter "{privacyPolicy}" (ohne Anführungszeichen) verwendet werden, um den Link zur Datenschutzerklärung einzufügen.
-        inspector:
-          group: settingsPopup
