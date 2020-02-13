@@ -28,8 +28,12 @@ class KlaroHelper implements ProtectedContextAwareInterface
      * @param NodeInterface[] $apps
      * @return array
      */
-    public function createAppConfiguration(array $apps)
+    public function createAppConfiguration(?array $apps)
     {
+        if ($apps == null) {
+            return [];
+        }
+
         return array_map(function($app) {
             /** @var NodeInterface $app */
             return array_merge((array)$app->getProperties(), $app->getNodeType()->getFullConfiguration()['klaro']);
