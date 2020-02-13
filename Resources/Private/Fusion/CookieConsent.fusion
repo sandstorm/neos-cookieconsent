@@ -1,4 +1,5 @@
-prototype(Sandstorm.CookieConsent:CookieConsent) < prototype(Neos.Fusion:Component) {
+prototype(Sandstorm.CookieConsent:Component.CookieConsent) < prototype(Neos.Fusion:Component) {
+    # Should already be converted when passed, e.g. through privacyPolicyHref.@process.convert = Neos.Neos:ConvertUris
     privacyPolicyHref = null
     cookieModalTranslations = null
     language = null

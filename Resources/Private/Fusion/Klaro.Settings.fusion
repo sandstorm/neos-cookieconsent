@@ -1,6 +1,5 @@
 prototype(Sandstorm.CookieConsent:Klaro.Settings) < prototype(Neos.Fusion:Component) {
     privacyPolicyHref = null
-    privacyPolicyHref.@process.convert = Neos.Neos:ConvertUris
 
     # 'de', 'en', 'fr', ... see klaro documentation. You can also define your own langauge key (e.g. 'foo') and provide all translations yourself
     language = null
