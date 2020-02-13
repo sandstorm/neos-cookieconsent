@@ -11,7 +11,7 @@
     cookies:
       - ["_gat_.*", "/"]
     purposes:
-      - 'tracking'
+      - tracking
   properties:
     title:
       defaultValue: Google Tag Manager

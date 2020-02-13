@@ -10,7 +10,7 @@
       - ['__tawkuuid', "/"]
       - ['TawkConnectionTime', "/"]
     purposes:
-      - 'livechat'
+      - livechat
   properties:
     title:
       defaultValue: Tawk Chat

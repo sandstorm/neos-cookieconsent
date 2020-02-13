@@ -9,7 +9,7 @@
     # a major version as it should be considered a breaking change.
     name: googleFonts
     purposes:
-      - 'styling'
+      - styling
   properties:
     title:
       defaultValue: Google Fonts

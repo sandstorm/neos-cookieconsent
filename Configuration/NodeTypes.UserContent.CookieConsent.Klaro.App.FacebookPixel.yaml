@@ -13,7 +13,7 @@
       - ['fr', "/", '.facebook.com']
       - ['', '/tr', 'www.facebook.com']
     purposes:
-      - 'tracking'
+      - tracking
   properties:
     title:
       defaultValue: Facebook Pixel
