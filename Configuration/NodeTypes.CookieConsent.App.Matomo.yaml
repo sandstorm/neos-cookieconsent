@@ -1,0 +1,22 @@
+'Sandstorm.CookieConsent:App.Matomo':
+  superTypes:
+    'Sandstorm.CookieConsent:App': true
+  ui:
+    label: Matomo
+  klaro:
+    # This name can be used as a reference in script-tags or fonts that should be lazy-loaded. See klaro documentation
+    name: matomo
+    cookies:
+      - ['_pk_ref', "/"]
+      - ['_pk_cvar', "/"]
+      - ['_pk_id', "/"]
+      - ['_pk_ses', "/"]
+      - ['_pk_hsr', "/"]
+    purposes:
+      - tracking
+  properties:
+    title:
+      defaultValue: Matomo
+    description:
+      defaultValue: Tool zur Analyse von Web-Plattformen.
+
