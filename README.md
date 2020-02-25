@@ -114,9 +114,9 @@ prototype(Vendor.Site:CookieConsent) < prototype(Neos.Fusion:Component) {
 
 ## 4. Add apps that need a users consent
 
-The package comes with a few apps liable for consent already preconfigured that you can just add from the Neos backend to the collection of app below your CookieConsent node.
+The package comes with a few apps (e.g. [Google Analytics](https://github.com/sandstorm/neos-cookieconsent/blob/master/Configuration/NodeTypes.CookieConsent.App.GoogleAnalytics.yaml) liable for consent already preconfigured that you can just add from the Neos backend to the collection of app below your CookieConsent node.
 
-In case you need an app that's not yet included, simply copy one of the existing node types and fill in the necessary information.
+In case you need an app that's not yet included, simply copy one of the [existing node types](https://github.com/sandstorm/neos-cookieconsent/tree/master/Configuration) and fill in the necessary information.
 
 **Please open a pull request or an issue with your apps configuration so others can benefit from it :)**
 
