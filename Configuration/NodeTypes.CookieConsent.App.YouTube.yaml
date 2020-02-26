@@ -1,0 +1,14 @@
+'Sandstorm.CookieConsent:App.YouTube':
+  superTypes:
+    'Sandstorm.CookieConsent:App': true
+  ui:
+    label: YouTube
+  klaro:
+    name: youtube
+    purposes:
+      - videos
+  properties:
+    title:
+      defaultValue: Youtube
+    description:
+      defaultValue: Erlaubt die Einbindung von Youtube-Videos.
