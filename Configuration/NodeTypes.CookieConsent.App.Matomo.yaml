@@ -18,5 +18,5 @@
     title:
       defaultValue: Matomo
     description:
-      defaultValue: Tool zur Analyse von Web-Plattformen.
+      defaultValue: Tool zur Analyse von Web-Plattformen. Matomo ermöglicht es das Nutzungsverhalten von Nutzern einer Website detailliert zu tracken (Suchbegriffe, User Agent etc.).
 
