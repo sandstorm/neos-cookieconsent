@@ -10,8 +10,6 @@
     name: facebookPixel
     cookies:
       - ['_fbp', "/"]
-      - ['fr', "/", '.facebook.com']
-      - ['', '/tr', 'www.facebook.com']
     purposes:
       - tracking
   properties:

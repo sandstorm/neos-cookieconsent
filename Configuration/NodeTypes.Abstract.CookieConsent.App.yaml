@@ -7,12 +7,12 @@
 # This name can be used as a reference in script-tags or fonts that should be loaded in a deferred manner. See klaro documentation
 # on how to defer loading of script, link and iframe tags
     name: 'to-be-set-by-your-app'
-# Example for a list of cookies. The three list items are: cookie-name, path, domain (needed if != your domain).
+# Example for a list of cookies. The three list items are: cookie-name, path, domain. Note that deleting cookies that were
+# set by a third party domain is impossible and will silently fail. This is because the browser does not allow cookie
+# access outside of the scope of your sites current domain.
 # See klaro documentation
 #   cookies:
 #      - ['_fbp', "/"]
-#      - ['fr', "/", '.facebook.com']
-#      - ['', '/tr', 'www.facebook.com']
 # The purposes listed here need a translation for the respective language they are used in
 #  purposes:
 #   - 'livechat'
