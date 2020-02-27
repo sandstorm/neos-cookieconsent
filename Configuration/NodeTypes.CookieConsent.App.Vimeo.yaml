@@ -1,0 +1,14 @@
+'Sandstorm.CookieConsent:App.Vimeo':
+  superTypes:
+    'Sandstorm.CookieConsent:App': true
+  ui:
+    label: Vimeo
+  klaro:
+    name: vimeo
+    purposes:
+      - videos
+  properties:
+    title:
+      defaultValue: Vimeo
+    description:
+      defaultValue: Erlaubt die Einbindung von Vimeo-Videos.
