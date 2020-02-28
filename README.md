@@ -19,12 +19,36 @@ This package is currently being maintained for Neos 4.3 LTS. It is stable, we us
 
 # Quickstart
 
-## 1. Add your own derived Node Type
+## 1. Add your own derived Node Type. 
+
+Here we decided to place the link to your privacy policy in the inspector of the node type of CookieConsent.
+We also specify a tab and a group in which it will appear.
 
 ```yaml
 'Vendor.Site:CookieConsent':
   superTypes:
     'Sandstorm.CookieConsent:CookieConsent': true
+  ui:
+    inspector:
+      tabs:
+        general:
+          label: Einstellungen
+          position: 1
+          icon: icon-pencil
+      groups:
+        settingsPrivacyPolicy:
+          label: Datenschutzerklärung
+          tab: general
+          icon: ellipsis-h
+          collapsed: true
+  properties:
+    privacyPolicyHref:
+      type: string
+      ui:
+        label: Verlinkte Datenschutzseite
+        inspector:
+          group: settingsPrivacyPolicy
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
 ```
 
 ## 2. Add the Node Type somewhere to your page
@@ -52,12 +76,12 @@ A simplified example:
 
 ```
 prototype(Vendor.Site:CookieConsent) < prototype(Neos.Fusion:Component) {
-	_privacyPolicyHref = /* TODO */
+    _privacyPolicyHref = /* TODO */
     _privacyPolicyHref.@process.convert = Neos.Neos:ConvertUris
     
-	_cookieModalTranslations = /* TODO */
-	_language = /* TODO */
-	_apps = /* TODO */
+    _cookieModalTranslations = /* TODO */
+    _language = /* TODO */
+    _apps = /* TODO */
 
     renderer = Sandstorm.CookieConsent:Component.CookieConsent {
         privacyPolicyHref = ${props._privacyPolicyHref}
@@ -69,12 +93,42 @@ prototype(Vendor.Site:CookieConsent) < prototype(Neos.Fusion:Component) {
 }
 ```
 
-A more concrete example with real values. Make sure to adapt to your node paths depending on where you placed the node.
+## 4. Pass in dynamic values
+In this example it was decided to let the editor change the privacy policy link in the Neos inspector.
 
+The example assumes you placed it directly below your root page (= site-node). Make sure to adapt to your node paths depending on where you placed the node.
 
 ```
 prototype(Vendor.Site:CookieConsent) < prototype(Neos.Fusion:Component) {
-    @context._cookieConsentProps = ${q(site).children('cookie-consent').find('[instanceof Vendor.Site:CookieConsent]').get(0).properties}
+    @context._cookieConsentProps = ${q(site).find('cookie-consent').get(0).properties}
+
+    _privacyPolicyHref = ${_cookieConsentProps.privacyPolicyHref}
+    _privacyPolicyHref.@process.convert = Neos.Neos:ConvertUris
+
+    _cookieModalTranslations = /* TODO */
+
+    renderer = Sandstorm.CookieConsent:Component.CookieConsent {
+        privacyPolicyHref = ${props._privacyPolicyHref ? props._privacyPolicyHref : '/footer/datenschutz.html'}
+        cookieModalTranslations = ${props._cookieModalTranslations}
+        language = ${site.context.dimensions.language[0] ? site.context.dimensions.language[0] : 'de'}
+        apps = ${q(site).children('cookie-consent').children().find('apps').children().get()}
+        includeLibraryCss = true
+    }
+}
+```
+
+## 5. Translate the modal (optional)
+The cookie consent can be translated. It has reasonable defaults for many languages and will try to determine the language of
+ your page automatically (for example by looking at your `<html lang>` attribute. 
+ For available translations see [the github repo](https://github.com/KIProtect/klaro/tree/master/src/translations).
+
+Note the fusion key `_cookieModalTranslations`. It reads more properties from the CookieConsent nodetype that we defined in step 1.
+One will be added as an example below. You can also provide static strings and not let the editor change the keys in the inspector in the
+Neos backend - it's up to you. Here the editor is supposed to provide their own texts.
+
+```
+prototype(Vendor.Site:CookieConsent) < prototype(Neos.Fusion:Component) {
+    @context._cookieConsentProps = ${q(site).find('cookie-consent').get(0).properties}
 
     _privacyPolicyHref = ${_cookieConsentProps.privacyPolicyHref}
     _privacyPolicyHref.@process.convert = Neos.Neos:ConvertUris
@@ -112,7 +166,38 @@ prototype(Vendor.Site:CookieConsent) < prototype(Neos.Fusion:Component) {
 }
 ```
 
-## 4. Add apps that need a users consent
+```yaml
+'Vendor.Site:CookieConsent':
+  superTypes:
+    'Sandstorm.CookieConsent:CookieConsent': true
+  ui: 
+    inspector:
+      groups:
+        smallPopup:
+          label: Kleines Popup
+          tab: general
+          icon: icon-pencil
+          position: 100
+          collapsed: true
+      /* ... */
+  properties:
+    ok:
+      type: string
+      defaultValue: Alle Cookies zulassen
+      ui:
+        label: Cookies-Zulassen Button
+        inspector:
+          group: smallPopup
+  /* Add all translations that should be translated by the editor ... */
+```
+
+The easiest way to find out what you can translate is to change the language of the cookieConsent to something that does not exist,
+e.g. "foo" (see in the renderer of the following component, there the language key is passed as a property). In the frontend it 
+will then fail to load translations and tell you the path where it was looking for the translation.
+
+
+
+## 6. Add apps that need a users consent
 
 The package comes with a few apps (e.g. [Google Analytics](https://github.com/sandstorm/neos-cookieconsent/blob/master/Configuration/NodeTypes.CookieConsent.App.GoogleAnalytics.yaml) liable for consent already preconfigured that you can just add from the Neos backend to the collection of app below your CookieConsent node.
 
@@ -121,7 +206,7 @@ In case you need an app that's not yet included, simply copy one of the [existin
 **Please open a pull request or an issue with your apps configuration so others can benefit from it :)**
 
 
-## 5. Place your new Component in your markup
+## 7. Place your new Component in your markup
 
 Render your new component somewhere on your page. 
 
