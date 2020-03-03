@@ -1,0 +1,18 @@
+'Sandstorm.CookieConsent:OpenCookieManagerButton':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Sandstorm.CookieConsent:Mixin.Inspector.TabsAndGroups': true
+  ui:
+    label: Cookie-Manager-Button
+    icon: external-link-square
+  properties:
+    text:
+      type: string
+      defaultValue: Cookie-Einstellungen
+      ui:
+        inlineEditable: true
+        inspector: null
+        inline:
+          editorOptions:
+            placeholder: '[Button text]'
+

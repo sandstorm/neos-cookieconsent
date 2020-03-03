@@ -8,6 +8,29 @@ This package helps you create a cookie consent that is more fine-grained than mo
 - Easily extensible -> Apps can simply be added and configured as nodetypes
 
 
+# Table of contents
+
+<!-- vim-markdown-toc GFM -->
+
+* [Compatibility and Maintenance](#compatibility-and-maintenance)
+* [Quickstart](#quickstart)
+  * [1. Add your own derived Node Type.](#1-add-your-own-derived-node-type)
+  * [2. Add the Node Type somewhere to your page](#2-add-the-node-type-somewhere-to-your-page)
+  * [3. Add rendering for your Node Type](#3-add-rendering-for-your-node-type)
+  * [4. Set the privacy policy link](#4-set-the-privacy-policy-link)
+  * [5. Translate the modal (optional)](#5-translate-the-modal-optional)
+  * [6. Add apps that need a users consent](#6-add-apps-that-need-a-users-consent)
+  * [7. Place your new Component in your markup](#7-place-your-new-component-in-your-markup)
+  * [8. Placing the Cookie-Manager button](#8-placing-the-cookie-manager-button)
+* [Customization](#customization)
+  * [1. Thing to customize](#1-thing-to-customize)
+  * [2. Thing to customize](#2-thing-to-customize)
+* [Next steps / possible further development](#next-steps--possible-further-development)
+* [License &amp; Copyright](#license-amp-copyright)
+
+<!-- vim-markdown-toc -->
+
+
 # Compatibility and Maintenance
 
 This package is currently being maintained for Neos 4.3 LTS. It is stable, we use it in our projects.
@@ -230,10 +253,18 @@ prototype(Vendor.Site:CookieConsent) < prototype(Neos.Fusion:Component) {
 
 ## 7. Place your new Component in your markup
 
-Render your new component somewhere on your page. 
+Render your new component somewhere on your page.
 
 `body.some.fusion.path.cookieConsent = Vendor.Site:CookieConsent`
 
+
+## 8. Placing the Cookie-Manager button
+
+To allow your users to revisit their cookie settings, you need to place a special button
+component somewhere on your site.
+We already provide a NodeType and its respective fusion component for this.
+Simply allow `'Sandstorm.CookieConsent:OpenCookieManagerButton': true` in one of your content
+collection configurations and add the component to your site (preferably on your data policy page).
 
 
 # Customization
@@ -243,8 +274,6 @@ TODO
 ## 1. Thing to customize
 
 ## 2. Thing to customize
-
-
 
 
 # Next steps / possible further development

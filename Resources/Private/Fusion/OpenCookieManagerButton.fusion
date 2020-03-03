@@ -1,0 +1,27 @@
+prototype(Sandstorm.CookieConsent:OpenCookieManagerButton) < prototype(Neos.Neos:ContentComponent) {
+    renderer = Sandstorm.CookieConsent:Component.OpenCookieManagerButton {
+        buttonText = Neos.Neos:Editable {
+            property = "text"
+            block = false
+        }
+
+        onClick = "(function showCookieSettings(e) { e.preventDefault(); klaro.show(); })(event)"
+        onClick.@if.notInBackend = ${!node.context.inBackend}
+
+        // The revoke class is deprectated, but we keep it for backwards compatibility reasons
+        cssClasses = 'revoke-cookie-consent-button open--cookie-manager-button'
+    }
+}
+
+prototype(Sandstorm.CookieConsent:Component.OpenCookieManagerButton) < prototype(Neos.Fusion:Component) {
+    buttonText = null
+    cssClasses = null
+    onClick = null
+
+    renderer = afx`
+        <a href="" class={props.cssClasses} onclick={props.onClick}>
+            {props.buttonText}
+        </a>
+    `
+}
+
