@@ -1,17 +1,8 @@
+# Deprecated - this merely exists for backwards compatibility
+# see NodeTypes.OpenCookieManagerButton.yaml
 'Sandstorm.CookieConsent:RevokeCookieConsentButton':
   superTypes:
-    'Neos.Neos:Content': true
-    'Sandstorm.CookieConsent:Mixin.Inspector.TabsAndGroups': true
+    'Sandstorm.CookieConsent:OpenCookieManagerButton': true
   ui:
-    label: Cookie-Manager-Button
+    label: Cookie-Manager-Button (Deprecated)
     icon: external-link-square
-  properties:
-    text:
-      type: string
-      defaultValue: Cookie-Einstellungen
-      ui:
-        inlineEditable: true
-        inspector: null
-        inline:
-          editorOptions:
-            placeholder: '[Button text]'

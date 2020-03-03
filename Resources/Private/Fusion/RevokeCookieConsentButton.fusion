@@ -1,25 +1,7 @@
-prototype(Sandstorm.CookieConsent:RevokeCookieConsentButton) < prototype(Neos.Neos:ContentComponent) {
-    renderer = Sandstorm.CookieConsent:Component.RevokeCookieConsentButton {
-        buttonText = Neos.Neos:Editable {
-            property = "text"
-            block = false
-        }
-
-        onClick = "return klaro.show();"
-        onClick.@if.notInBackend = ${!node.context.inBackend}
-
-        cssClasses = 'revoke-cookie-consent-button'
-    }
+// These two prototypes are depecrated in favor of the prototypes they each inherit from.
+// The do merely exist for backwards compatibility purposes.
+prototype(Sandstorm.CookieConsent:RevokeCookieConsentButton) < prototype(Sandstorm.CookieConsent:OpenCookieManagerButton) {
 }
 
-prototype(Sandstorm.CookieConsent:Component.RevokeCookieConsentButton) < prototype(Neos.Fusion:Component) {
-    buttonText = null
-    cssClasses = null
-    onClick = null
-
-    renderer = afx`
-        <a class={props.cssClasses} onclick={props.onClick}>
-            {props.buttonText}
-        </a>
-    `
+prototype(Sandstorm.CookieConsent:Component.RevokeCookieConsentButton) < prototype(Sandstorm.CookieConsent:Component.OpenCookieManagerButton) {
 }
