@@ -1,5 +1,5 @@
 // These two prototypes are depecrated in favor of the prototypes they each inherit from.
-// The do merely exist for backwards compatibility purposes.
+// They do merely exist for backwards compatibility purposes.
 prototype(Sandstorm.CookieConsent:RevokeCookieConsentButton) < prototype(Sandstorm.CookieConsent:OpenCookieManagerButton) {
 }
 
