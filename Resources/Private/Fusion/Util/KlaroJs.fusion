@@ -1,9 +1,15 @@
-prototype(Sandstorm.CookieConsent:Script.KlaroJs) < prototype(Neos.Fusion:Tag) {
-    tagName = 'script'
-    attributes {
-        defer = true
-        src = Neos.Fusion:ResourceUri {
-            path = 'resource://Sandstorm.CookieConsent/Public/JavaScript/klaro-0-2-20-no-css.js'
+prototype(Sandstorm.CookieConsent:Script.KlaroJs) < prototype(Neos.Fusion:Component) {
+    disableAutoPopup = false
+
+    renderer = Neos.Fusion:Tag {
+        tagName = 'script'
+        attributes {
+            defer = true
+            src = Neos.Fusion:ResourceUri {
+                path = 'resource://Sandstorm.CookieConsent/Public/JavaScript/klaro-0-2-20-no-css.js'
+            }
+            # The API expects this to be a string, not a boolean
+            data-no-auto-load = ${props.disableAutoPopup ? "true" : "false"}
         }
     }
 }
