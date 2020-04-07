@@ -40,6 +40,7 @@ prototype(Sandstorm.CookieConsent:Klaro.Settings) < prototype(Neos.Fusion:Compon
         lang.@if.true = ${props.language != null}
 
         translations = ${Array.set([], props.language, props.cookieModalTranslations)}
+        translations.@if.true = ${props.cookieModalTranslations != null}
 
         apps = ${Klaro.createAppConfiguration(props.apps)}
 
