@@ -10,6 +10,7 @@ prototype(Sandstorm.CookieConsent:Component.CookieConsent) < prototype(Neos.Fusi
     # probably (almost) fullscreen and can only be closed by taking a decision. But the decision must be informed,
     # so reading of the privacy policy should be possible.
     disableAutoPopup = false
+    additionalConfig = Neos.Fusion:DataStructure
 
     renderer = afx`
         <Sandstorm.CookieConsent:Klaro.Settings
@@ -17,6 +18,7 @@ prototype(Sandstorm.CookieConsent:Component.CookieConsent) < prototype(Neos.Fusi
             language={props.language}
             cookieModalTranslations={props.cookieModalTranslations}
             apps={props.apps}
+            additionalConfig={props.additionalConfig}
         />
         <Sandstorm.CookieConsent:Script.ConvertStringToRegex />
         <Sandstorm.CookieConsent:Script.KlaroJs disableAutoPopup={props.disableAutoPopup} />

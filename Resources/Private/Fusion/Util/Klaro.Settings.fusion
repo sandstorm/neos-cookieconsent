@@ -8,6 +8,8 @@ prototype(Sandstorm.CookieConsent:Klaro.Settings) < prototype(Neos.Fusion:Compon
 
     apps = null
 
+    additionalConfig = Neos.Fusion:DataStructure
+
     renderer = Neos.Fusion:DataStructure {
         # You can customize the ID of the DIV element that Klaro will create
         # when starting up. If undefined, Klaro will use 'klaro'.
@@ -44,6 +46,7 @@ prototype(Sandstorm.CookieConsent:Klaro.Settings) < prototype(Neos.Fusion:Compon
 
         apps = ${Klaro.createAppConfiguration(props.apps)}
 
+        @apply.additionalConfig = ${props.additionalConfig}
         @process.toJson = ${Json.stringify(value, ['JSON_UNESCAPED_SLASHES'])}
         @process.wrap = ${'<script>var klaroConfig=' + value + ';</script>'}
     }
