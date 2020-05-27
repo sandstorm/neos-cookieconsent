@@ -5,8 +5,10 @@ prototype(Sandstorm.CookieConsent:OpenCookieManagerButton) < prototype(Neos.Neos
             block = false
         }
 
-        onClick = "(function showCookieSettings(e) { e.preventDefault(); klaro.show(); })(event)"
-        onClick.@if.notInBackend = ${!node.context.inBackend}
+        onClick = Oekokiste.Core:FrontendBackendCase {
+            inBackend = "(function doNothing { e.preventDefault();return)()"
+            inFrontend = "(function showCookieSettings(e) { e.preventDefault(); klaro.show(); })(event)"
+        }
 
         // The revoke class is deprectated, but we keep it for backwards compatibility reasons
         cssClasses = 'revoke-cookie-consent-button open--cookie-manager-button'
