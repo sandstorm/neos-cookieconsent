@@ -1,5 +1,11 @@
 # Sandstorm CookieConsent
 
+
+THIS PACKAGE IS NO LONGER MAINTANED
+
+You should have a look at your [CookiePunch Package](https://github.com/sandstorm/Sandstorm.CookiePunch)
+
+
 This package helps you create a cookie consent that is more fine-grained than most others.
 
 - Can be configured by the integrator
