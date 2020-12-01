@@ -5,7 +5,7 @@ prototype(Sandstorm.CookieConsent:OpenCookieManagerButton) < prototype(Neos.Neos
             block = false
         }
 
-        onClick = Oekokiste.Core:FrontendBackendCase {
+        onClick = Sandstorm.CookieConsent:FrontendBackendCase {
             inBackend = "(function doNothing { e.preventDefault();return)()"
             inFrontend = "(function showCookieSettings(e) { e.preventDefault(); klaro.show(); })(event)"
         }
