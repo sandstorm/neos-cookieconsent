@@ -1,0 +1,15 @@
+prototype(Sandstorm.CookieConsent:FrontendBackendCase) < prototype(Neos.Fusion:Component) {
+    inBackend = null
+    inFrontend = null
+
+    renderer = Neos.Fusion:Case {
+        inBackend {
+            condition = ${node.context.inBackend}
+            renderer = ${props.inBackend}
+        }
+        inFrontend {
+            condition = ${true}
+            renderer = ${props.inFrontend}
+        }
+    }
+}
