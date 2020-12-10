@@ -48,7 +48,7 @@ This package is currently being maintained for Neos 4.3 LTS. It is stable, we us
 
 # Quickstart
 
-## 1. Add your own derived Node Type. 
+## 1. Add your own derived Node Type.
 
 Here we decided to place the link to your privacy policy in the inspector of the node type of CookieConsent.
 We also specify a tab and a group in which it will appear.
@@ -107,7 +107,7 @@ A simplified example:
 prototype(Vendor.Site:CookieConsent) < prototype(Neos.Fusion:Component) {
     _privacyPolicyHref = /* TODO */
     _privacyPolicyHref.@process.convert = Neos.Neos:ConvertUris
-    
+
     _cookieModalTranslations = /* TODO */
     _language = /* TODO */
     _apps = /* TODO */
@@ -148,7 +148,7 @@ prototype(Vendor.Site:CookieConsent) < prototype(Neos.Fusion:Component) {
 
 ## 5. Translate the modal (optional)
 The cookie consent can be translated. It has reasonable defaults for many languages and will try to determine the language of
- your page automatically (for example by looking at your `<html lang>` attribute. 
+ your page automatically (for example by looking at your `<html lang>` attribute.
  For available translations see [the github repo](https://github.com/KIProtect/klaro/tree/master/src/translations).
 
 Note the fusion key `_cookieModalTranslations`. It reads more properties from the CookieConsent nodetype that we defined in step 1.
@@ -202,7 +202,7 @@ prototype(Vendor.Site:CookieConsent) < prototype(Neos.Fusion:Component) {
 'Vendor.Site:CookieConsent':
   superTypes:
     'Sandstorm.CookieConsent:CookieConsent': true
-  ui: 
+  ui:
     inspector:
       groups:
         smallPopup:
@@ -224,7 +224,7 @@ prototype(Vendor.Site:CookieConsent) < prototype(Neos.Fusion:Component) {
 ```
 
 The easiest way to find out what you can translate is to change the language of the cookieConsent to something that does not exist,
-e.g. "foo" (see in the renderer of the following component, there the language key is passed as a property). In the frontend it 
+e.g. "foo" (see in the renderer of the following component, there the language key is passed as a property). In the frontend it
 will then fail to load translations and tell you the path where it was looking for the translation.
 
 
@@ -277,7 +277,36 @@ collection configurations and add the component to your site (preferably on your
 
 TODO
 
-## 1. Thing to customize
+## 1. Add additional configuration for klaro.js
+
+Add `additionalConfig` property to renderer of `Sandstorm.CookieConsent:Component.CookieConsent`. This  will add/override
+properties to/of Sandstorm.CookieConsent:Klaro.Settings. You can add as many configuration options as you like.
+Take in look into https://github.com/KIProtect/klaro/blob/master/dist/config.js for valid config options.
+
+```
+prototype(Your.Package:Content.CookieConsent) < prototype(Neos.Neos:ContentComponent) {
+    node = ${q(site).children('cookie-consent').get(0)}
+
+    @context {
+        node = ${this.node}
+        appNodes = ${q(Neos.Node.nearestContentCollection(this.node, 'apps')).children()}
+    }
+
+    renderer = Sandstorm.CookieConsent:Component.CookieConsent {
+
+        # The additional config will add/override properties to/of Sandstorm.CookieConsent:Klaro.Settings
+        additionalConfig = Neos.Fusion:DataStructure {
+            acceptAll = ${q(appNodes).count() > 0}
+            hideDeclineAll = ${q(appNodes).count() == 0 || (q(appNodes).count() > 0 && q(node).property('hideDeclineAll'))}
+            cookieName = ${!String.isBlank(q(node).property('cookieName')) ? q(node).property('cookieName') : 'klaro'}
+            cookieExpiresAfterDays = ${!String.isBlank(q(node).property('cookieExpiresAfterDays')) ? q(node).property('cookieExpiresAfterDays') : 365}
+            default = ${q(node).property('default')}
+            mustConsent = ${q(node).property('mustConsent')}
+            storageMethod = ${q(node).property('storageMethod')}
+        }
+    }
+}
+```
 
 ## 2. Thing to customize
 
